@@ -15,6 +15,12 @@ parameters:
     type: string
     default: Ubuntu 14.04 LTS (Trusty Tahr) (PVHVM)
 
+  availability_zone:
+    label: AZ Selection
+    description: Availability zone
+    type: string
+    default: SY2
+
   flavor:
     description: Flavor for Cloud Servers
     type: string
@@ -64,6 +70,7 @@ resources:
       flavor: { get_param: flavor }
       image: { get_param: image }
       key_name: { get_param: ssh_keypair_name }
+      availability_zone: { get_param: availability_zone }
       metadata:
         rax-heat: { get_param: "stack_id" }
       #networks:
